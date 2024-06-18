@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XE Music | Sanzu</title>
+</head>
+<body onload="stopMusic()">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="menu">
+                <ul>
+                    <li class="main-menu">
+                        <i class='bx bxs-home'></i>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="main-menu">
+                        <i class='bx bx-search'></i>
+                        <a href="#">Search</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu library">
+                <ul>
+                    <li  class="main-menu">
+                        <i class='bx bx-library' ></i>
+                        <a href="#">Your Library</a>
+                    </li>
+                    <li>
+                        <div class="lib-extras">
+                            <div class="left-arrow">
+                                <i class="bi bi-arrow-left-short"></i>
+                            </div>
+                            <div class="items">
+                                <div tabindex="0">
+                                    <p>Playlist</p>
+                                </div>
+                                <div tabindex="0">
+                                    <p>Podcasts and Radio</p>
+                                </div>
+                                <div tabindex="0">
+                                    <p>Downloads</p>
+                                </div>
+                            </div>
+                            <div class="right-arrow active">
+                                <i class="bi bi-arrow-right-short"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="playlist-icons">
+                    <li class="search">
+                        <i class="bi bi-search search"></i>
+                    </li>
+                    <li>
+                        <i class="bi bi-plus"></i>
+                    </li>
+                    </div>
+                </ul>
+                <div class="playlists">
+                    <div>
+                        <img src="media/playlist1.jpg" class="playlist-thumbnail">
+                        <div class="playlist-name">
+                            <h5>Phantasma</h5>
+                            <p>Sanzu</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="media/playlist4.jpg" class="playlist-thumbnail">
+                        <div class="playlist-name">
+                            <h5>Lamhe</h5>
+                            <p>Sanzu</p>
+                        </div>    
+                    </div>
+                    <div>
+                        <img src="media/playlist2.jpg" class="playlist-thumbnail">
+                        <div class="playlist-name">
+                            <h5>Inception</h5>
+                            <p>Sanzu</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="media/playlist3.jpg" class="playlist-thumbnail">
+                        <div class="playlist-name">
+                            <h5>Moon</h5>
+                            <p>Sanzu</p>
+                        </div>
+                    </div>     
+                    <div>
+                        <img src="images/song.jpeg" class="playlist-thumbnail">
+                        <div class="playlist-name">
+                            <h5>Local Files</h5>
+                    </div>
+                    <div></div>     
+                </div>   
+            </div> 
+        </aside>  
+    </div>
+    <div class="container footer">
+        <footer class="bottom-bar">
+            <div class="playing">
+                <div class="right-section" style="display: none;">
+                    <audio controls id="song">
+                        <source src="media/We Dont Talk Anymore.mp3">
+                    </audio>
+                </div>
+                <div class="music-thumbnail">
+                    <div>
+                        <img src="images/song.jpeg" id="thumbnail">
+                    </div>
+                    <div class="music-title">
+                        <h4 id="title">-/-</h4>
+                        <p id="artist">...</p>
+                    </div>
+                </div>
+                <div class="media-player">
+                    <div class="controls">
+                        <div><i onclick="shuffle()" class='bi bi-shuffle shuffle'></i></div>
+                        <div><i  class='bx bi bi-skip-start-fill skip' id="backward"></i></div>
+                        <div><i class='bi bi-play-circle-fill play' id="togglePlay"></i></div>
+                        <div><i class='bx bi bi-skip-end-fill skip' id="forward"></i></div>
+                        <div><i class='bi bi-repeat repeat'></i></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div >
+                            <span class="currentTime">--:--</span>
+                        </div>
+                        <div>
+                            <input type="range" value="0" id="progress">
+                        </div>
+                        <div>
+                            <span class="musicDuration">--:--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-controls">
+                    <div class="icon now-playing-arrow" tabindex="0">
+                        <i class="bi bi-play-btn now-playing-arrow"></i>
+                    </div>
+                    <div class="icon lyrics" tabindex="0">
+                        <i class="bi bi-card-text"></i>
+                    </div>
+                    <div class="icon queue" tabindex="0">
+                        <i class="bi bi-justify-left"></i>                       
+                    </div>
+                    <div class="icon volume">
+                        <i class='bx bx-volume' id="volume"></i>
+                        <input type="range" value="0.5" min="0" max="1" step="0.01" id="audio-control">
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="main-container home" id="main-container">
+        <header class="header" id="main-header">
+            <div class="selectors">
+                <div class="left">
+                    <div>
+                        <p>All</p>
+                    </div>
+                    <div>
+                        <p>Music</p>
+                    </div>
+                    <div>
+                        <p>Podcasts</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <i class="bi bi-bell-fill"></i>
+                    </div>
+                    <div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </header> 
+        <main class="main" id="main">
+            <h2>Made For You</h2>
+            <div class="made-for-you">
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/charlie2.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                    <div class="main-items">
+                            <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 2</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                    <div class="main-items">
+                            <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 3</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                    <div class="main-items">
+                            <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 4</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 5</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jump-back">
+                <h2>Jump Back In</h2>
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-items-container">
+                    <div class="main-items">
+                        <img src="images/song.jpeg">
+                        <div>
+                            <h4>Daily Mix Week 1</h4>
+                            <p>Sanzu, Sanzu, Sanzu, Sanzu and more</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2>Top Songs</h2>
+            <div class="main-items-container">
+
+            </div>
+        </main>
+    </div>
+
+    
+    <div class="main-container search" style="display: none;">
+        <header class="header" id="main-header">
+            <div class="selectors">
+                <div class="left">
+                    <div>
+                        <p>All</p>
+                    </div>
+                    <div>
+                        <p>Music</p>
+                    </div>
+                    <div>
+                        <p>Podcasts</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <i class="bi bi-bell-fill"></i>
+                    </div>
+                    <div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </header> 
+    </div>
+    <div class="now-playing-container">
+        <aside class="now-playing" id="now-playing">
+                <img src="images/charlie2.jpeg" id="now-playing-song-thumbnail">
+                <div>
+                    <h2 id="now-playing-song-title">No Current Song</h2>
+                    <p id="now-playing-song-artist">-</p>
+                </div>
+                <div class="credits">
+                    <span>Credits</span>
+                    <p id="credits">-</p>
+                </div>
+        </aside> 
+    </div> 
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
