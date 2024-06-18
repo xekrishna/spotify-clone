@@ -43,7 +43,7 @@ img {
     min-width: 10%;
     max-width: 40%;
     display: block;
-    background: rgb(184, 183, 183);
+    background: #000000;
 }
 
 .container .sidebar {
